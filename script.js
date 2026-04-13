@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', () => {
     scene.add(threeGroup);
 
     // Initial default colors & opacities
-    let accentColorHex = 0x00BFFF;
+    let accentColorHex = 0xFF4444;
     let darkGlobeOpacity = 0.18;
     let darkOuterOpacity = 0.08;
     let darkRingsOpacity = 0.15;
@@ -229,11 +229,11 @@ window.addEventListener('DOMContentLoaded', () => {
             outerGlobeMat.opacity = 0.05;
         } else {
             // Revert Blue Scheme for Dark Mode
-            innerGlobeMat.color.setHex(0x00BFFF);
-            outerGlobeMat.color.setHex(0x00BFFF);
-            ringMat.color.setHex(0x00BFFF);
-            innerPartMat.color.setHex(0x00BFFF);
-            outerPartMat.color.setHex(0x00BFFF);
+            innerGlobeMat.color.setHex(0xFF4444);
+            outerGlobeMat.color.setHex(0xFF4444);
+            ringMat.color.setHex(0xFF4444);
+            innerPartMat.color.setHex(0xFF4444);
+            outerPartMat.color.setHex(0xFF4444);
 
             // Restore visibility
             innerGlobeMat.opacity = darkGlobeOpacity;
@@ -365,17 +365,13 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     );
 
-    // Projects Alternating Slides
+    // Projects Uniform Slides
     gsap.utils.toArray('.project-card').forEach((card, i) => {
-        const isEven = i % 2 === 0;
-        const xOffset = isEven ? -80 : 80;
-        const rotation = isEven ? 1.5 : -1.5;
-
         gsap.fromTo(card,
-            { opacity: 0, x: xOffset, rotation: rotation },
+            { opacity: 0, y: 50 },
             {
-                scrollTrigger: { trigger: card, start: "top 80%" },
-                opacity: 1, x: 0, rotation: 0, duration: 1.2, ease: "power2.out",
+                scrollTrigger: { trigger: card, start: "top 85%" },
+                opacity: 1, y: 0, duration: 1.0, ease: "power2.out",
                 onComplete: () => {
                     card.style.transform = '';
                     card.style.opacity = '1';
